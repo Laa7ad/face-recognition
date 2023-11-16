@@ -1,0 +1,68 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-4">
+            {% if images %}
+                <div id="result2" style="justify-content: center; display: flex; margin-top: 30px;">
+                    <img src="{{ url_for('video') }}">
+                </div>
+                <form id="capture_form">
+                    <input type="text" id="folder_name" name="folder_name" style="display: none;"><br>
+                    <div class="d-grid gap-2">
+                        <input type="button" id="captureButton" value="Capture Faces" class="btn btn-primary">
+                    </div>
+                    
+                </form>
+                
+            {% else %}
+                <div id="result2" style="justify-content: center; display: flex; margin-top: 30px;">
+                    <img src="{{ url_for('static', filename='logo/logo.png') }}">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div> 
+
+<!-- Modal -->
+<div class="modal fade" id="trainingModal" tabindex="-1" aria-labelledby="trainingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="trainingModalLabel">Add new personne</h5>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="messagemodal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="trainingModalLabel">Message</h5>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    
+                        
+                        <div id="result"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/script_add.js') }}"></script>
+
+{% endblock %}

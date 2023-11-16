@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Search Image{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-4">
+            {% if rsimages is none %}
+                    <div class="mb-3">
+                        <div style="justify-content: center; display: flex; margin-top: 30px;"><img src="{{url_for('static',filename='logo/logo.png')}}" alt="face" ></div>
+                    </div>
+            {% endif %}        
+            <form id ="search" name="search" action="{{url_for('search')}}" method="post" >
+            
+
+                <div class="row mb-3">
+                    <div class="mb-3"> 
+                          
+                            <div class="col-sm-10">
+                                <div class="d-grid gap-2">
+                                        <select id ="image_select" name="image_select" class="Input" >
+                                            {% for image in images %}
+                                            <option value="{{ image }}">{{ image }}</option>
+                                            {% endfor %}
+                                        </select>
+                                </div>
+                            </div>
+                    </div>
+                  </div>
+                
+                  <div class="mb-3">
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary"> Search  personne</button>
+                    </div>  
+                            
+                  </div>         
+                <br><br><br>
+            </form>
+
+         
+
+            {% if simage %}
+            <div class="row mb-3">
+                    
+                <div class="col-sm-10">
+                    <picture>
+                        
+                        <img src="{{simage}}" class="img-fluid img-thumbnail" alt="...">
+                      </picture>
+                        
+
+                    
+                </div>
+                
+            </div>    
+
+
+            <div class="alert alert-danger" role="alert">
+                 {{rsimages}}
+            </div>     
+
+            {%endif%}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

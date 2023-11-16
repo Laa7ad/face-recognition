@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% block content%}
+<script>
+  function submitForm() {
+      var form = document.getElementById('load_function_form');
+       
+      form.submit();  
+      form.target = '_blank';   
+  }
+</script>
+<div class="container">
+   <div class="film">
+     
+    <div class="mb-3">
+         <div style="justify-content: center; display: flex; margin-top: 30px;"><img src="{{url_for('static',filename='logo/logo.png')}}" alt="face" ></div>
+     </div>
+     <div class="mb-3">
+        <form id="load_function_form" action="/load_function" method="post">
+          <div class="mb-3">
+            <div class="d-grid gap-2">
+            <select name="option">
+              <option value="none">None</option>
+              <option value="film">ben affleck</option>
+              <option value="film2">Robert Downey</option>
+          </select>
+        </div>
+          </div>
+           
+            <div class="mb-3">
+              <div class="d-grid gap-2">
+                <input type="submit" value="stream video" class="btn btn-success"  onclick="submitForm()">
+              </div>
+              
+            </div>
+            
+        </form>
+     </div>  
+
+  
+     
+   </div>
+</div>   
+
+ {% endblock %}

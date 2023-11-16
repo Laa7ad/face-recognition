@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% block content%}
+<script>
+  function submitForm() {
+      var form = document.getElementById('load_function_form');
+       
+      form.submit();  
+      form.target = '_blank';   
+  }
+</script>
+   <div class="film">
+     
+
+    <form id="load_function_form" action="/load_function" method="post">
+        <select name="option">
+            <option value="none">None</option>
+            <option value="film">ben affleck</option>
+            <option value="film2">Robert Downey</option>
+        </select>
+        <input type="submit" value="stream video"   onclick="submitForm()">
+    </form>
+
+    <div style="justify-content: center; display: flex; margin-top: 30px;"><img src="{{url_for('static',filename='logo/logo.png')}}" alt="face" ></div>
+     
+   </div>
+ {% endblock %}
